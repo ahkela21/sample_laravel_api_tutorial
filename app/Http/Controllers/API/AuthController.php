@@ -67,9 +67,9 @@ class AuthController extends Controller
     public function refresh()
     {
         // $user = UserType::where('ic',request('username'))->first();
-        $userType = request()->userType;
+        $userType = 'App\Model\\'.request()->userType;
 
-        if($userType == 'App\Models\User')
+        if($userType == 'App\Model\User')
         {
             $tokenRequest = Request::create('/oauth/token', 'post', [
                 'grant_type' => 'refresh_token',
