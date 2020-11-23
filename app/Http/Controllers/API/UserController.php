@@ -75,8 +75,8 @@ class UserController extends Controller
 
         try {
             $hashPassword = Hash::make($request->new_password);
-            User::where('name', $request->name)->update(array('password' => $hashPassword));
-            return new BaseCollection(User::where('name', $request->name)->get());
+            User::where('name', $request->username)->update(array('password' => $hashPassword));
+            return new BaseCollection(User::where('name', $request->username)->get());
         } catch (\Exception $ex) {
             return response()->json([
                 'status' => 0,
