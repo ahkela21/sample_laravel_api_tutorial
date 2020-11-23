@@ -14,7 +14,7 @@ class BaseCollection extends ResourceCollection
      * @return array
      */
     protected $status;
-    protected $statusCode;
+    protected $status_code;
     protected $message;
     protected $model;
 

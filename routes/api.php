@@ -15,9 +15,11 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-Route::group(['middleware' => 'auth:api'], function () {
+Route::group(['middleware' => 'auth:api,apiadmin'], function () {
+    Route::post('changePassword', [UserController::class, 'changePassword']);
     Route::apiResource('user', UserController::class);
     Route::apiResource('post', PostController::class);
+    
 });
 
 Route::group(['middleware' => 'auth:apiadmin'], function () {
@@ -27,3 +29,9 @@ Route::group(['middleware' => 'auth:apiadmin'], function () {
 });
 
 Route::post('login', [AuthController::class, 'login']);
+
+Route::post('refresh', [AuthController::class, 'refresh']);
+
+
+
+Route::put('forgetpassword', [UserController::class, 'forgetPassword']);
